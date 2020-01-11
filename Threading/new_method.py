@@ -12,7 +12,7 @@ def do_something(seconds):
 
 with concurrent.futures.ThreadPoolExecutor() as executor:
     secs = [1, 5, 4, 3, 2, 1]
-    results = [executor.submit(do_something, sec) for sec in secs] # this is called list comprehension
+    results = [executor.submit(do_something, sec) for sec in secs]  # this is called list comprehension
 
     # if an exception occurs inside the function, it will only be
     # raised when it's value is retrieved from the results iterator.
