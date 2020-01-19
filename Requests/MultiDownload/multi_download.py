@@ -69,7 +69,7 @@ if __name__ == "__main__":
 
     print(f"Total Downloads: {len(download_list)}")
     print(f"Download Per Set: {dl_per_set}")
-    print(f"Download Sets: {download_iterations}")
+    print(f"Download Sets: {download_iterations}\n")
 
     for iteration in range(download_iterations):
         print("="*25)
@@ -90,12 +90,6 @@ if __name__ == "__main__":
         print(f'Downloads Left: {downloads_left}')
         print("=" * 25)
         print("\n")
-
-
-    # with concurrent.futures.ThreadPoolExecutor() as ex:
-    #     results = ex.map(download, download_list)
-    #     for result in results:
-    #         print(result)
 
     end = time.perf_counter()
 

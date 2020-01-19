@@ -7,20 +7,20 @@ start = time.perf_counter()
 def do_something(seconds):
     print(f"Sleeping {seconds} Second(s)...")
     time.sleep(seconds)
-    return f"({seconds})Done Sleeping..."
+    return f"({seconds})Done Sleeping...", 1
 
 
 with concurrent.futures.ThreadPoolExecutor() as executor:
-    secs = [1, 5, 4, 3, 2, 1]
-    results = [executor.submit(do_something, sec) for sec in secs]  # this is called list comprehension
+    secs = [1, 10, 4, 3, 2, 1]
+    # results = [executor.submit(do_something, sec) for sec in secs]  # this is called list comprehension
 
     # if an exception occurs inside the function, it will only be
     # raised when it's value is retrieved from the results iterator.
     # https://youtu.be/IEEhzQoKtQU
 
     # returns result as they finish
-    for f in concurrent.futures.as_completed(results):
-        print(f.result())
+    # for f in concurrent.futures.as_completed(results):
+    #     print(f.result())
 
     # returns result as in the order that they were started
     results = executor.map(do_something, secs)
