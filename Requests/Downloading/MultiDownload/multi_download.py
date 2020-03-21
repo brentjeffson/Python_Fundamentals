@@ -80,7 +80,7 @@ if __name__ == "__main__":
             results = ex.map(download, download_list[dlstart:dlend])
             for result in results:
                 print(result)
-        if iteration+1 == download_iterations:
+        if iteration + 1 == download_iterations:
             downloads_left -= downloads_left
             print('Last Iteration')
         else:
