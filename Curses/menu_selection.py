@@ -26,8 +26,10 @@ def main(stdscr):
     selectedRow = 0
     printMenu(stdscr, selectedRow)
     while True:
-        stdscr.addstr(0, 0, f"ROW: {selectedRow}")        
+        # stdscr.addstr(0, 0, f"ROW: {selectedRow}")        
         selectorKey = stdscr.getch()
+        stdscr.addstr(0, 0, str(selectorKey)) 
+        stdscr.getch()       
 
         if selectorKey == curses.KEY_UP and selectedRow > 0:
             selectedRow -= 1
