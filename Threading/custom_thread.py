@@ -18,10 +18,11 @@ class CustomThreading(threading.Thread):
         self.__stop = False
 
     def run(self) -> None:
+        # super(CustomThreading, self).run()
         plog(["started"], [self.name])
         self.__worker()
         plog(["finished"], [self.name])
-        super(CustomThreading, self).run()
+        
 
     def put(self, item):
         self.__q.put(item)
@@ -42,6 +43,10 @@ class CustomThreading(threading.Thread):
             plog(["finished"], [item])
             self.__q.task_done()
 
+def log(msg):
+    print(msg.upper())
+    return msg + "logged"
+
 
 if __name__ == "__main__":
     thread = CustomThreading(daemon=True)
@@ -51,7 +56,7 @@ if __name__ == "__main__":
     while True:
         work = input("\n> ")
         for i in range(10):
-            thread.put(f"{work}:{i}")
+            thread.put(log(f"{work}:{i}"))
         if work == "q":
             plog(["done"])
             thread.wait()
